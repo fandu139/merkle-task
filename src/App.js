@@ -1,24 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+  Navigate
+} from "react-router-dom";
+import LoginPage from './views/Auth/Login';
+import ListUserPage from './views/User/List/User';
+import { ProvideAuth, authContext } from './context/router';
+import { useContext } from 'react';
+
+const PrivateRoutes = () => {
+  const {isAuthenticated} = useContext(authContext);
+
+  return(
+    isAuthenticated ? <Outlet/> : <Navigate to="/login"/>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProvideAuth>
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route element={ <LoginPage />} path="/login"/>
+            <Route element={<PrivateRoutes />}>
+              <Route element={<ListUserPage/>} path="/" exact/>
+            </Route>
+          </Routes>
+        </Router>
+      </div>
+    </ProvideAuth>
   );
 }
 
