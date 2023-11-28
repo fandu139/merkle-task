@@ -9,6 +9,12 @@ npm run install
 npm run start
 ```
 
+Anda bisa menggunakan credential ini 
+```
+  username: "johnd",
+  password: "m38rmF$"
+```
+
 ## Requirement
 - [X] Login Page
 - [X] List User
