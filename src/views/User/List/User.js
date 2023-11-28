@@ -48,11 +48,12 @@ function DetailUser() {
     getFirstDataUser();
   }, [limit]);
 
-  // modal detail user
+  // show modal detail user
   const handleShowModalDetail = () => {
     setShowModalDetail(!showModalDetail);
   }
 
+  // show modal detail user and get id will show
   const handleShowDetailByID = (id) => {
     setShowDetailUser(id);
     handleShowModalDetail();
@@ -68,6 +69,7 @@ function DetailUser() {
     setShowModalEditUser(!showModalEditUser);
   }
 
+  // show modal edit user and get id will show and edit data user
   const handleShowEditByID = (id) => {
     setShowEditUser(id);
     handleShowModalEdit();

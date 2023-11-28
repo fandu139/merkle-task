@@ -2,6 +2,13 @@
 
 Made with React JS
 
+## How to run this project
+```
+git clone https://github.com/fandu139/merkle-task.git
+npm run install
+npm run start
+```
+
 ## Requirement
 - [X] Login Page
 - [X] List User
@@ -19,12 +26,12 @@ src
 ├── views
 │   ├── Auth
 │   ├── Users
-│         |──── List
-│            |──── components
-│               ├──── Modal
-│                  ├─── AddUser
-│                  ├─── DetailUser
-│                  ├─── EditUser
+│   │   │──── List
+│   │   │   │──── components
+│   │   │   │   ├─── Modal
+│   │   │   │   │   ├─── AddUser
+│   │   │   │   │   ├─── DetailUser
+│   │   │   │   │   ├─── EditUser
 ```
 
 ## Reference
