@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-import { useNavigate } from "react-router-dom";
 import ModalDetailUser from './component/Modal/DetailUser';
 import ModalAddUser from './component/Modal/AddUser';
 import ModalEditUser from './component/Modal/EditUser';
