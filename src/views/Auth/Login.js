@@ -1,4 +1,4 @@
-import '../../App.css';
+import './Login.css';
 import { authContext } from '../../context/router';
 import useForm from '../../hook/useFormLogin';
 import validate from '../../utils/validateForm';
@@ -6,8 +6,13 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-function App() {
+function LoginPage() {
   const navigate = useNavigate();
   const {setIsAuthenticated} = useContext(authContext);
 
@@ -54,50 +59,59 @@ function App() {
     )
   }
 
-
   return (
-    <div className="App">
-      <form className="form-login" onSubmit={handleSubmit} noValidate>
-        <h3>Masuk</h3>
-        <div className="mb-3">
-          <label>Username</label>
-          <input
-            type="email"
-            name="email"
-            value={values.email || ""}
-            className="form-control"
-            placeholder="Enter email"
-            onChange={handleChange}
-          />
-          {errors.email && (
-            <p className='error'>{errors.email}</p>
-          )}
-        </div>
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={values.password || ""}
-            className="form-control"
-            placeholder="Enter password"
-            onChange={handleChange}
-          />
-          {errors.password && (
-            <p className='error'>{errors.password}</p>
-          )}
-        </div>
-        {errorLogin && (
-            <p className='error'>{errorLogin}</p>
-          )}
-        <div className="d-grid">
-          {isLoading ? <SpinnerComponent /> : <button type="submit" className="btn btn-primary">
-            Submit
-          </button>}
-        </div>
-      </form>
+    <div className='container-login-page' style={{ backgroundImage: "url(/images/bg-sign-in-cover.jpeg)" }}>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col xs={6}>
+            <Form onSubmit={handleSubmit} noValidate className='shadow-lg p-4 mb-5 bg-body-tertiary rounded'>
+              <Row className="mb-3 text-center">
+                <h3>Masuk</h3>
+              </Row>
+              <Row className="mb-3">
+                <Form.Group as={Col} md="12" controlId="validationEmail">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    value={values.email || ""}
+                    className="form-control"
+                    placeholder="Enter email"
+                    onChange={handleChange}
+                  />
+                  {errors.email && (
+                    <p className='error'>{errors.email}</p>
+                  )}
+                </Form.Group>
+              </Row>
+              <Row className="mb-3">
+                <Form.Group as={Col} md="12" controlId="validationPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    value={values.password || ""}
+                    className="form-control"
+                    placeholder="Enter password"
+                    onChange={handleChange}
+                  />
+                  {errors.password && (
+                    <p className='error'>{errors.password}</p>
+                  )}
+                </Form.Group>
+              </Row>
+              {errorLogin && (
+                <p className='error'>{errorLogin}</p>
+              )}
+              <div className="d-grid gap-2">
+                {isLoading ? <SpinnerComponent /> : <Button type="submit">Masuk</Button>}
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
 
-export default App;
+export default LoginPage;
